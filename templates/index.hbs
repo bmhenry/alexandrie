@@ -2,308 +2,172 @@
 <html lang="en">
 
 <head>
-    {{> partials/head}}
-    <style>
-        .hero {
-            width: 100%;
-        }
+    <meta charset="utf-8"/>
+    <title>alexandrie</title>
 
-        .hero-content-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            width: 100%;
-            padding: 40px 10px 10px;
-        }
+    <!-- fix mobile scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        .hero-title {
-            font-size: 30px;
-            font-weight: bolder;
-            text-align: center;
-        }
+    <!-- bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/cf712e235b.js" crossorigin="anonymous"></script>
 
-        .hero-subtitle {
-            font-size: 24px;
-            text-align: center;
-        }
+    <!-- css -->
+    <link rel="stylesheet" href="/assets/style.css">
 
-        .hero-links {
-            margin-top: 7px;
-            display: flex;
-        }
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Marck+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Source+Code+Pro&display=swap" rel="stylesheet"> 
 
-        .hero-link {
-            display: block;
-            border-radius: 5px;
-            border: solid 1.5px var(--fg-color);
-            margin-left: 5px;
-            padding: 2px 8px;
-        }
-
-        .hero-link:first-child {
-            margin-left: 0;
-        }
-
-        .hero-link:hover,
-        .hero-link:focus {
-            background-color: var(--fg-color);
-            color: var(--bg-color);
-        }
-
-        .stats-container {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding-top: 10px;
-        }
-
-        .stats {
-            align-items: center;
-            justify-content: center;
-            white-space: normal;
-            padding: 10px 0;
-            display: flex;
-            flex-direction: column;
-            width: 1400px;
-            border-top: 2px solid var(--fg-color);
-            border-bottom: 2px solid var(--fg-color);
-        }
-
-        .stat {
-            font-size: 17px;
-        }
-
-        .content-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-        }
-
-        .content-grid {
-            width: 1400px;
-            padding: 10px;
-            display: grid;
-            grid-template-rows: 1fr;
-            grid-template-columns: repeat(2, 1fr);
-            align-items: center;
-            justify-content: center;
-        }
-
-        @media (max-width: 1400px) {
-            .content-grid {
-                width: 100%;
-            }
-
-            .stats {
-                width: 90%;
-            }
-        }
-
-        .card-content {
-            flex-grow: 1;
-        }
-
-        .most-downloaded,
-        .last-updated {
-            width: 100%;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            flex-direction: column;
-            padding: 0 10px;
-        }
-
-        .most-downloaded {
-            border-right: 1px solid var(--fg-color);
-        }
-
-        .last-updated {
-            border-left: 1px solid var(--fg-color);
-        }
-
-        .most-downloaded-title,
-        .last-updated-title {
-            width: 100%;
-            text-align: center;
-            font-size: 21px;
-            font-weight: bold;
-            padding: 5px 0;
-        }
-
-        .most-downloaded-list,
-        .last-updated-list {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .most-downloaded-entries,
-        .last-updated-entries {
-            width: 100%;
-            counter-reset: rank;
-            display: flex;
-            flex-direction: column;
-            padding: 10px;
-        }
-
-        .most-downloaded-entry::before,
-        .last-updated-entry::before {
-            counter-increment: rank;
-            content: counter(rank) ". ";
-        }
-
-        .most-downloaded-entry,
-        .last-updated-entry {
-            width: 100%;
-            color: var(--fg-color);
-            background-color: var(--lighter-bg-color);
-            padding: 10px 20px;
-            box-shadow: 0 0 10px #0006;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.15s;
-            margin-top: 10px;
-        }
-
-        .most-downloaded-entry:first-child,
-        .last-updated-entry:first-child {
-            margin-top: 0;
-        }
-
-        .most-downloaded-entry:hover,
-        .most-downloaded-entry:focus,
-        .last-updated-entry:hover,
-        .last-updated-entry:focus {
-            transform: scale(1.03);
-        }
-
-        .most-downloaded-empty,
-        .last-updated-empty {
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .card-footer {
-            width: 100%;
-            padding: 5px;
-        }
-
-        .card-footer-button {
-            width: 100%;
-            text-decoration: none;
-            text-align: center;
-            padding: 7px 10px;
-            font-weight: bold;
-            font-size: 20px;
-            display: block;
-            box-shadow: 0 0 10px #0006;
-            border-radius: 30px;
-            color: var(--fg-color);
-            background-color: var(--light-bg-color);
-            transition: transform 0.15s;
-        }
-
-        .card-footer-button:hover,
-        .card-footer-button:focus {
-            transform: scale(1.03);
-        }
-
-        @media (max-width: 1000px) {
-            .content-grid {
-                grid-template-rows: repeat(2, 1fr);
-                grid-template-columns: 1fr;
-            }
-
-            .most-downloaded-entries,
-            .last-updated-entries,
-            .card-footer {
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            .most-downloaded,
-            .last-updated {
-                border-right: none;
-                border-left: none;
-            }
-
-            .last-updated {
-                padding-top: 5px;
-            }
-        }
-    </style>
 </head>
 
+
 <body>
-    {{> partials/navbar}}
-    <div class="hero">
-        <div style="height: 50px"></div>
-        <div class="hero-content-container">
-            <div class="hero-title">Welcome to {{ instance.title }} !</div>
-            <div class="hero-subtitle">{{ instance.description }}</div>
-            {{#if instance.links}}
-            <div class="hero-links">
-                {{#each instance.links}}
-                <a class="hero-link" href="{{ this.href }}">{{ this.name }}</a>
-                {{/each}}
+
+<div id="main-content" class="container-fluid p-0">
+
+    <nav class="navbar navbar-expand-md navbar-dark position-absolute w-100">
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon align-baseline"></span>
+        </button>
+        <a class="navbar-brand p-0 m-0 ml-2 mr-auto" href="#">Alexandrie</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-3 ml-md-5 mr-auto">
+                {{#if user}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/account/manage">Account</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/account/logout">Log Out</a>
+                </li>
+                {{else}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/account/login">Login</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/account/register">Sign Up</a>
+                </li>
+                {{/if}}
+            </ul>
+<!--             <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
+        </div>
+    </nav>
+
+    <div id="splash-container">
+        <div id="splash-inner" class="d-flex flex-column">
+            <div class="mb-auto"></div>
+            <div id="splash-vertical-center" class="d-flex flex-row">
+                <div class="mr-auto"></div>
+                <div id="splash-content" class="p-3"/>
+                    <p class="splash-header text-center pb-2">
+                        {{ instance.title }}
+                    </p>
+                    <p class="splash-text text-center pb-5">
+                        {{ instance.description }}
+                    </p>
+                    <form class="form-inline d-flex flex-wrap" method="GET" action="/search">
+                        <input id="searchbar" class="form-control flex-grow-1 border-light text-light bg-transparent" type="search" placeholder="Search" aria-label="Search" name="q" autofocus>
+                        <button class="btn btn-outline-light mx-auto ml-sm-2 mr-md-0 mt-2 mt-sm-0" type="submit">Seach</button>
+                    </form>
+                </div>
+                <div class="ml-auto"></div>
+            </div>
+            <div class="mt-auto">
+                <div class="w-100 text-center">
+                    <a class="clearlink m-0 p-0" href="#showcase">
+                        <i class="fas fa-chevron-down fa-4x text-white"></i>
+                    </a>
+                </div>
+                <div class="d-flex flex-row splash-footer justify-content-around w-100 text-center pb-2">
+                    <div></div>
+                    <span><b>{{ total_downloads }} total downloads</b></span>
+                    <span><b>{{ crate_count }} crates stored</b></span>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="showcase" class="row mx-0 py-5 px-md-5 w-100">
+        <div id="mostdownloaded" class="showcaselist text-center col-md px-0 mx-auto mx-md-4">
+            {{#if most_downloaded}}
+            <h3 class="sl-header mb-4"><a href="/most-downloaded" class="clearlink">Most Downloaded</a></h4>
+            <div class="sl-items row mx-0 mb-4">
+                <ul class="sl-itemcol col-md px-2 mb-0">
+                    {{#each most_downloaded }}
+                    {{#if (lt @index 5)}}
+                    {{> partials/most_downloaded_item }}
+                    {{/if}}
+                    {{/each}}
+                </ul>
+                <ul class="sl-itemcol col-md px-2">
+                    {{#each most_downloaded }}
+                    {{#if (gte @index 5)}}
+                    {{> partials/most_downloaded_item }}
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+            {{/if}}
+        </div>
+        <div id="mostrecent" class="showcaselist text-center col-md px-0 mx-0 mx-md-4 mt-4 mt-md-0">
+            {{#if last_updated}}
+            <h3 class="sl-header mb-4"><a href="/last-updated" class="clearlink">Recently Updated</a></h4>
+            <div class="sl-items row mx-0 mb-4">
+                <ul class="sl-itemcol col-md px-2 mb-0">
+                    {{#each last_updated }}
+                    {{#if (lt @index 5)}}
+                    {{> partials/last_updated_item }}
+                    {{/if}}
+                    {{/each}}
+                </ul>
+                <ul class="sl-itemcol col-md px-2">
+                    {{#each last_updated }}
+                    {{#if (gte @index 5)}}
+                    {{> partials/last_updated_item }}
+                    {{/if}}
+                    {{/each}}
+                </ul>
             </div>
             {{/if}}
         </div>
     </div>
-    <div class="stats-container">
-        <div class="stats">
-            <div class="stats-block">
-                <div class="stat"><b>{{ crate_count }}</b>&nbsp;crates stored</div>
-                <div class="stat"><b>{{ total_downloads }}</b>&nbsp;total downloads</div>
-            </div>
-        </div>
-    </div>
-    <div class="content-container">
-        <div class="content-grid">
-            <div class="most-downloaded">
-                <div class="most-downloaded-title">Most downloaded</div>
-                <div class="most-downloaded-entries">
-                    {{#if most_downloaded}}
-                    {{#each most_downloaded}}
-                    <a class="most-downloaded-entry" href="/crates/{{ this.name }}">
-                        <b>{{ this.name }}</b>: {{ this.downloads }} downloads
-                    </a>
-                    {{/each}}
-                    {{else}}
-                    <div class="most-downloaded-empty">Empty list.</div>
-                    {{/if}}
+
+    {{#if index_url}}
+    <div id="index-help" class="p-3 p-md-5">
+        <div id="index-help-inner" class="bg-white rounded-sm p-2 p-md-5">
+            <h3>Need help?</h3>
+            <p>
+                Put this in <code>~/.cargo/config</code> to use this registry system-wide,
+                or add it to <code>.cargo/config</code> in your crate root to make it project-specifc.
+            </p>
+            <p><em>(You can rename the registry to whatever you like, e.g. </em><code>[registries.my-registry]</code><em>)</em>
+            <div class="term bg-dark m-0 mt-2 mt-md-5">
+                <div class="term-bar m-0 w-100 row">
+                    <div class="term-bar-exit"></div>
+                    <div class="term-bar-min"></div>
+                    <div class="term-bar-max"></div>
                 </div>
-                <div class="card-footer">
-                    <a class="card-footer-button" href="/most-downloaded">See more...</a>
-                </div>
-            </div>
-            <div class="last-updated">
-                <div class="last-updated-title">Last updated</div>
-                <div class="last-updated-entries">
-                    {{#if last_updated}}
-                    {{#each last_updated}}
-                    <a class="last-updated-entry" href="/crates/{{ this.name }}">
-                        <b>{{ this.name }}</b>: {{ this.updated_at }}
-                    </a>
-                    {{/each}}
-                    {{else}}
-                    <div class="last-updated-empty">Empty list.</div>
-                    {{/if}}
-                </div>
-                <div class="card-footer">
-                    <a class="card-footer-button" href="/last-updated">See more...</a>
+                <div class="p-2 p-md-5">
+                    <p class="term-line toml-header">[registries.alexandrie]</p>
+                    <p class="term-line"><span class="toml-key">index</span> <span class="toml-arith">=</span> <span class="toml-str">"{{index_url}}"</span>
                 </div>
             </div>
         </div>
     </div>
+    {{/if}}
+
+</div> 
+
 </body>
+
 
 </html>

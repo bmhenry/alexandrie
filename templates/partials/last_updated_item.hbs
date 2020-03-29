@@ -1,0 +1,16 @@
+<li>
+    <a class="sl-link clearlink" href="/crates/{{this.name}}">
+        <div class="sl-item d-flex flex-row py-2 px-1">
+            <div class="sl-iteminfo text-left">
+                <div class="sl-itemheader">{{this.name}}</div>
+                {{#if this.description}}
+                <div class="sl-itemdesc">{{this.description}}</div>
+                {{/if}}
+            </div>
+            <div class="d-flex flex-column justify-content-around ml-auto text-right">
+                <span class="sl-itemmetrics"><i class="fas fa-calendar-alt date-icon"></i></span>
+                <span class="sl-itemmetrics">{{this.updated_at}}</span>
+            </div>
+        </div>
+    </a>
+</li>

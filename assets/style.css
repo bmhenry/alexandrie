@@ -212,7 +212,9 @@ body {
 #index-help {
     /*background-color: #F0A30F;*/
     /*background-color: #188278;*/
-    background-color: #E17D12;
+    /*background-color: #E17D12;*/
+    /*background-image: linear-gradient(-10deg, #EA9445, #FFC930);*/
+    background-image: linear-gradient(-10deg, #22A389, #20B9C7);
 }
 
 .term {
